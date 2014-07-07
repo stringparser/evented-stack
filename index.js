@@ -1,11 +1,11 @@
 
-var Queue = require('./array-subclass');
+var Queue = require('./lib/array-subclass');
 
 //
 // ## Allow forEach to stop
 //
 
-Queue.prototype.forEach = function(fn, scope){
+Queue.prototype.forEach = function forEach(fn, scope){
 
   var i, len; 
   for(i = 0, len = this.length; i < len; ++i){
