@@ -1,11 +1,15 @@
 var inherits = require('inherits');
 
-module.exports = exports = Queue
-
 function Queue(){
-
 }
 
-inherits(Array, Queue);
+Queue.prototype = [];
+Queue.prototype.__proto__ = {};
 
-console.log(Queue)
+inherits(Queue, Array)
+
+module.exports = exports = Queue;
+
+
+var que = new Queue([1,2,3]);
+console.log(que)
