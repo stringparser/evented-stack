@@ -1,15 +1,21 @@
+
 var inherits = require('inherits');
 
-function Queue(){
+//
+//  Queue as Array subclass
+//  Who knew this wa such a headeache. 
+//
+//  Thanks to this awesome post: 
+//    http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/
+//
+function SubArray() {
+  var arr = [ ];
+  arr.push.apply(arr, arguments);
+  arr.__proto__ = SubArray.prototype;
+  return arr;
 }
-
-Queue.prototype = [];
-Queue.prototype.__proto__ = {};
-
-inherits(Queue, Array)
-
-module.exports = exports = Queue;
+SubArray.prototype = new Array;
 
 
-var que = new Queue([1,2,3]);
-console.log(que)
+
+module.exports = Queue;
