@@ -1,5 +1,4 @@
-exports = module.exports = require('./lib/que.js');
-
-var Queue = module.exports;
+var Queue = require('./lib/que.js');
 var que = new Queue();
-console.log('%s', que);
+
+exports = module.exports = que;
