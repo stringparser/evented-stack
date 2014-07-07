@@ -1,0 +1,9 @@
+{
+  "name" : "que",
+  "version" : "0.0.1",
+  "description" : "Array style async queue",
+  "repository" : {
+    "type" : "git",
+    "https://github.com/stringparser/que.git"
+  }
+}
