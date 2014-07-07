@@ -1,10 +1,13 @@
 {
-  "name" : "que",
-  "version" : "0.0.1",
-  "description" : "Array styled queue",
-  "author" : "Javier Carrillo",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/stringparser/que.git"
+  "name": "que",
+  "version": "0.0.1",
+  "description": "Array styled queue",
+  "author": "Javier Carrillo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stringparser/que.git"
+  },
+  "dependencies": {
+    "inherits": "^2.0.1"
   }
 }
