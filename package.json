@@ -1,9 +1,10 @@
 {
   "name" : "que",
   "version" : "0.0.1",
-  "description" : "Array style async queue",
+  "description" : "Array styled queue",
+  "author" : "Javier Carrillo",
   "repository" : {
     "type" : "git",
-    "https://github.com/stringparser/que.git"
+    "url" : "https://github.com/stringparser/que.git"
   }
 }
