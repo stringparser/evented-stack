@@ -6,8 +6,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/stringparser/que.git"
-  },
-  "dependencies": {
-    "inherits": "^2.0.1"
   }
 }

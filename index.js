@@ -1,19 +1,21 @@
 
-//
-//  Queue as Array subclass
-//  Who knew this wa such a headeache. 
-//
-//  Thanks to this awesome post: 
-//    http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/
-//
-function Queue() {
-  var arr = [ ];
-  arr.push.apply(arr, arguments);
-  arr.__proto__ = SubArray.prototype;
-  return arr;
-}
-Queue.prototype = new Array;
+var Queue = require('./array-subclass');
 
+//
+// ## Allow forEach to stop
+//
+
+Queue.prototype.forEach = function(fn, scope){
+
+  var i, len; 
+  for(i = 0, len = this.length; i < len; ++i){
+    if(i in this){
+      var ret = fn.call(scope, this[i], i, this);
+
+      if(!ret) break;
+    }
+  }
+}
 
 
 module.exports = Queue;
