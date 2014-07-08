@@ -1,8 +1,12 @@
 var Queue = require('./lib/Queue.js');
+// > undefined
 
 //
+// > undefined
 // Testing
+// > undefined
 //
+// > undefined
 var  que = new Queue(Math.random, Math.sin, Math.cos);
 
 
