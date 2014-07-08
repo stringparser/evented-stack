@@ -1,6 +1,6 @@
 # que
 
-##   an Array styled queue for node and the browser
+ Array styled queue for node and the browser
 
 ### Why
   I wanted an array like queue with juicy behaviour.
