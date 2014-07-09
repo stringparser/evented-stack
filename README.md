@@ -5,8 +5,8 @@
 ### Why
   I wanted an array like queue with juicy behaviour and custom flow control.
 
-  Inspired by creationix's [https://www.npmjs.org/package/stack](stack)
-  and jessetane's [https://www.npmjs.org/package/queue](queue)
+  Inspired by creationix's [stack](https://www.npmjs.org/package/stack)
+  and jessetane's [queue](https://www.npmjs.org/package/queue)
 
 ### Usage
   You get an Array subClass out of the `module`.
