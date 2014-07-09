@@ -2,13 +2,16 @@
 
  Evented, Array styled, queue for node and the browser
 
+### Usage
+
+
 ### Why
   I wanted an array like queue with juicy behaviour and custom flow control.
 
   Inspired by creationix's [stack](https://www.npmjs.org/package/stack)
   and jessetane's [queue](https://www.npmjs.org/package/queue)
 
-### Usage
+### General Idea
   You get an Array subClass out of the `module`.
 
   Added to the Array goodness, there is an observer pattern baked in to make
