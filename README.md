@@ -30,17 +30,20 @@ var http = require('http');
 var Stack = require('stack'); // Array subClass - EventEmitter
 var stack = new Stack();
 
-stack
-  .push(function stackFn(req, res){
+// elements of the stack
+stack.push(function stackFn1(req, res){
 
     stack.set('request time', new Date());
     res.write('Hello ');
 
-  }).push(function stackFn(req, res){
+  }).push(function stackFn2(req, res){
 
     res.write(' there!');
 
-  }).once('start', function onStart(req, res){ // Once call back
+  })
+
+// events
+stack.once('start', function onStart(req, res){ // Once call back
 
     console.log('Next time I won\'t be here');
 
