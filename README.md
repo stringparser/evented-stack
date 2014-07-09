@@ -76,8 +76,8 @@ var Server = http.createServer(function(req, res){
   stack.silent = false; // Or listen on demand
 
   stack.forEach(function(layer, index){ // stack.forEach fires events:
-
     layer(req, res);                    //  `start`, `next` and `end`
+
   }, req, res) // Pass arguments to event callbacks
                // might change
 })
