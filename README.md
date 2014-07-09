@@ -15,53 +15,59 @@
 ```
 
 var http = require('http');
-var Stack = require('stack');
-
-// Let's make a logger middleware
+var Stack = require('stack'); // Array subClass - EventEmitter
 var stack = new Stack();
 
-// Stack inherits from event emitter
+stack
+  .push(function stackFn(req, res){
 
-stack.push(function stackFn(req, res){
+    stack.set('request time', new Date());
+    res.write('Hello ');
 
-  stack.set('request time', new Date())
-  res.write('Hello ')
+  }).push(function stackFn(req, res){
 
-}).push(function stackFn(req, res){
+    res.write(' there!');
 
-  res.write(' there!')
+  }).once('start', function onStart(req, res){ // Once call back
 
-}).once('start', function onStart(req, res){ // Once call back
+    console.log('Next time I won\'t be here');
 
-  console.log('Next time I won\'t be here')
+  }).on('next', function onNext(req, res){
 
-}).on('next', function onNext(req, res){
+    console.log('In between layers of the stack')
 
-  console.log('In between layers of the stack')
+  }).on('end', function onEnd(req, res){
 
-}).on('end', function onEnd(req, res){
+    var time = ( new Date() - stack.get('request time') ).toString();
+    res.write('\n')
+    res.end('Request time: ' + time + ' ms');
+  })
 
-  var time = ( new Date() - stack.get('request time') ).toString();
-  res.write('\n')
-  res.end('Request time: ' + time + ' ms');
-})
+```
+At this point the stack is
 
+```
+stack =
+// > [ [Function: stackFn1],
+// >   [Function: stackFn2] ]
+stack._events =
+// > { start: { [Function: g] listener: [Function: onStart] },
+// >   next: [Function: onNext],
+// >   end: [Function: onEnd] }
+```
+
+```
 
 var Server = http.createServer(function(req, res){
 
+  stack.silent = true;  // We can choose to keep events quiet
+  stack.silent = false; // Or listen on demand
 
-  // We can choose to keep events quiet
-    stack.silent = true;
-  // Or listen on demand
-    stack.silent = false;
+  stack.forEach(function(layer, index){ // stack.forEach fires events:
 
-  //
-  // stack.forEach fires custom events:
-  //  `start`, `next` and `end`
-  stack.forEach(function(layer, index){
-    layer(req, res);
-
-  }, req, res) // Pass arguments to event emitters
+    layer(req, res);                    //  `start`, `next` and `end`
+  }, req, res) // Pass arguments to event callbacks
+               // might change
 })
 
 Server.listen(3000, function(){
