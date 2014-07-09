@@ -39,11 +39,10 @@ stack.push(function stackFn1(req, res){
   }).push(function stackFn2(req, res){
 
     res.write(' there!');
-
   })
 
 // events
-stack.once('start', function onStart(req, res){ // Once call back
+stack.once('start', function onStart(req, res){ // A once callback
 
     console.log('Next time I won\'t be here');
 
