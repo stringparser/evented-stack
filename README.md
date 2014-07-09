@@ -8,6 +8,18 @@
   Inspired by creationix's [stack](https://www.npmjs.org/package/stack)
   and jessetane's [queue](https://www.npmjs.org/package/queue)
 
+### General idea
+  You get an Array subClass out of the `module`.
+
+  Added to the Array goodness, there is an observer pattern baked in to make
+  flow control over the queue customizable.
+
+  For iterative methods such as `forEach`, `every` and `some` events are emitted
+  at the start, next, and end elements.
+
+  <b>Note</b>: only functions can be pushed to the Stack if you are only interested
+  on the evented behaviour of the array look at `/lib/EventedArray.js` instead.
+
 ### Usage
 
  Lets make a simple example that will measue the time of a request
@@ -44,8 +56,8 @@ stack
   })
 
 ```
-At this point the stack is
 
+At this point the stack is
 ```
 stack =
 // > [ [Function: stackFn1],
@@ -56,8 +68,8 @@ stack._events =
 // >   end: [Function: onEnd] }
 ```
 
+Now we can hook it up to the server
 ```
-
 var Server = http.createServer(function(req, res){
 
   stack.silent = true;  // We can choose to keep events quiet
@@ -74,15 +86,3 @@ Server.listen(3000, function(){
   console.log('Server running on port '+3000);
 })
 ```
-
-### General idea
-  You get an Array subClass out of the `module`.
-
-  Added to the Array goodness, there is an observer pattern baked in to make
-  flow control over the queue customizable.
-
-  For iterative methods such as `forEach`, `every` and `some` events are emitted
-  at the start, next, and end elements.
-
-  <b>Note</b>: only functions can be pushed to the Stack if you are only interested
-  on the evented behaviour of the array look at `/lib/EventedArray.js` instead.
