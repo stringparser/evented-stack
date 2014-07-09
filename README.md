@@ -25,7 +25,6 @@
  Lets make a simple example that will measue the time of a request
 
 ```
-
 var http = require('http');
 var Stack = require('stack'); // Array subClass - EventEmitter
 var stack = new Stack();
