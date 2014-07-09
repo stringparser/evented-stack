@@ -1,4 +1,4 @@
-var Queue = require('./lib/Queue');
+var Stack = require('./lib/Queue');
     methods = require('./lib/methods');
 
 /*
