@@ -13,15 +13,18 @@
   and jessetane's [queue](https://www.npmjs.org/package/queue)
 
 ### General idea
-  Get an Array subClass out of the `module` after which one can add flow control. See `./lib/ArraySubClass.js` or the awesome [kangax post](http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/) on how to do that.
+  Get an Array subClass out of the `module` after which one can add flow control.
+    - See `./lib/ArraySubClass.js` or the awesome [kangax post](http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/) on how to do that.
 
-  Added to the Array goodness, the array inherits from EventEmitter to make
-  flow control over the queue customizable.
+  Have the thing inherit from EventEmitter so one can plug flow control on the known array methods.
 
-  One should be able to switch the events on and of.
+  Niceness:
+    - One should be able to switch the events on and of.
+    - setState method provided to store simple data between layers of the stack.
 
-  For iterative methods such as `forEach`, events are emitted. See below for
-  more information on this.
+  Defaults:
+    - For iterative methods such as `forEach`, events are emitted. See below for
+    more information on this.
 
   <b>Note</b>: right you can push everything to the stack. In the future
   that might change.
