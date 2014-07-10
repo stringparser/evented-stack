@@ -1,1 +1,1 @@
-exports = module.exports = require('./lib/EventedArray');
+exports = module.exports = require('./lib/ArrayEmitter');

@@ -1,21 +1,16 @@
 
-var http = require('http');
-// > undefined
-var Stack = require('stack');
-// > undefined
+var http = require('http'),
+   Stack = require('stack');
 
-// Let's make a logger middleware
-// > undefined
+
+//
 var stack = new Stack();
-// > undefined
 
 // Stack inherits from event emitter
-// > undefined
-
 stack.push(function stackFn1(req, res){
 
   stack.set('request time', new Date())
-  res.write('Hello ')
+  res.write('Hola mama! ')
 
 }).push(function stackFn2(req, res){
 
@@ -33,7 +28,7 @@ stack.push(function stackFn1(req, res){
 
   var time = ( new Date() - stack.get('request time') ).toString();
   res.write('\n')
-  res.end('Request time: ' + time + ' ms');
+  res.end('Tiempo de respueta del servidor: ' + time + ' ms');
 })
 // > [ [Function: stackFn1],
 // >   [Function: stackFn2] ]
@@ -55,12 +50,11 @@ var Server = http.createServer(function(req, res){
     stack.silent = false;
 
   //
-  // stack.forEach fires custom events:
+  // stack.run is like [].forEach but fires 3 events:
   //  `start`, `next` and `end`
-  stack.forEach(function(layer, index){
-    layer(req, res);
+  stack.run(function(layer, index, retArray){
 
-  }, req, res) // Pass arguments to event emitters
+  })
 })
 // > undefined
 
