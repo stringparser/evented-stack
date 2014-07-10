@@ -47,28 +47,35 @@ var stack = new Stack();
 // Elements of the stack
 stack.push(function stackFn1(req, res){
 
-    stack.set('request time', new Date());
-    res.write('Hello ');
+    stack.set('request time', new Date())
+    res.write('')
+
+    return 'There is no dark side of the Moon.';
 
   }).push(function stackFn2(req, res){
 
-    res.write(' there!');
+    res.write('\n As a matter of fact.')
+    return 'Second layer return';
+
   })
 
 // Events
-stack.once('start', function onStart(req, res){ // A once callback
+stack.once('start', function onStart(req, res){ // Once call back
 
-    console.log('Next time I won\'t be here');
+    console.log('onStart: Next time I won\'t be here')
 
-  }).on('next', function onNext(req, res){ // Between stack functions (layer)
+  }).on('next', function onNext(req, res){
 
-    console.log('In between layers of the stack')
+    console.log('onNext: In between layers of the stack')
 
   }).on('end', function onEnd(req, res){
 
+    console.log('onEnd: finished!')
     var time = ( new Date() - stack.get('request time') ).toString();
-    res.write('\n')
-    res.end('Request time: ' + time + ' ms');
+
+    res.write('It\'s all dark.');
+    res.write('\n');
+    res.end('The request took ' + time + ' ms');
   })
 
 ```
@@ -88,14 +95,16 @@ Now we can hook it up to a http.Server
 ```js
 var Server = http.createServer(function(req, res){
 
-  stack.silent = true;  // We can choose to keep events quiet
-  stack.silent = false; // Or listen on demand
+  // We can choose to keep events quiet
+    stack.silent = true;
+  // Or listen on demand
+    stack.silent = false;
 
-  stack.forEach(function(layer, index){ // stack.forEach fires events:
-    layer(req, res);                    //  `start`, `next` and `end`
-
-  }, req, res) // Pass arguments to event callbacks
-               // might change
+  // stack.run is like [].forEach but fires 3 events: `start`, `next` and `end`
+  // spec: stack.run(stackArgs [,callback(lasRet, index, allReturns)])
+  stack.run(req, res, function(lastReturn, index, returns){
+    console.log('\nstack[' + index-1 + '] returned ', lastReturn, '\n');
+  })
 })
 
 Server.listen(3000, function(){

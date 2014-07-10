@@ -16,25 +16,31 @@ stack
 stack.push(function stackFn1(req, res){
 
   stack.set('request time', new Date())
-  res.write('Hola mama! ')
+  res.write('There is no dark side of the Moon.')
+
+  return 'Layer 1!';
 
 }).push(function stackFn2(req, res){
 
-  res.write(' there!')
+  res.write('\nAs a matter of fact ')
+  return 'Layer 2!';
 
 }).once('start', function onStart(req, res){ // Once call back
 
-  console.log('Next time I won\'t be here')
+  console.log('onStart: Next time I won\'t be here')
 
 }).on('next', function onNext(req, res){
 
-  console.log('In between layers of the stack')
+  console.log('onNext: In between layers of the stack')
 
 }).on('end', function onEnd(req, res){
 
+  console.log('onEnd: finished!')
   var time = ( new Date() - stack.get('request time') ).toString();
-  res.write('\n')
-  res.end('Tiempo de respueta del servidor: ' + time + ' ms');
+
+  res.write('it\'s all dark.');
+  res.write('\n');
+  res.end('The request took ' + time + ' ms');
 })
 // > [ [Function: stackFn1],
 // >   [Function: stackFn2] ]
@@ -49,17 +55,16 @@ stack._events
 
 var Server = http.createServer(function(req, res){
 
-
   // We can choose to keep events quiet
     stack.silent = true;
   // Or listen on demand
     stack.silent = false;
 
-  //
-  // stack.run is like [].forEach but fires 3 events:
-  //  `start`, `next` and `end`
-  stack.run(req, res, function(lastReturn, returns){
+  // stack.run is like [].forEach but fires 3 events: `start`, `next` and `end`
+  // spec: stack.run(stackArgs [,callback(lasRet, index, allReturns)])
 
+  stack.run(req, res, function(lastReturn, index, returns){
+    console.log('\nstack[' + index-1 + '] returned ', lastReturn, '\n');
   })
 })
 // > undefined
@@ -76,14 +81,9 @@ Server.listen(3000, function(){
 // >   _maxListeners: 10,
 // >   _connections: 0,
 // >   connections: [Getter/Setter],
-// >   _handle:
-// >    { fd: 10,
-// >      writeQueueSize: 0,
-// >      onconnection: [Function: onconnection],
-// >      owner: [Circular] },
+// >   _handle: null,
 // >   _usingSlaves: false,
 // >   _slaves: [],
 // >   allowHalfOpen: true,
 // >   httpAllowHalfOpen: false,
-// >   timeout: 120000,
-// >   _connectionKey: '4:0.0.0.0:3000' }
+// >   timeout: 120000 }

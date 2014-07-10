@@ -1,3 +1,3 @@
-exports = module.exports = new require('./lib/Stack');
+exports = module.exports = require('./lib/Stack');
 // > [ 1, 2, 3 ]
 
