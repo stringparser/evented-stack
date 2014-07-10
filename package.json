@@ -19,7 +19,6 @@
   ],
   "repository": "stringparser/stack",
   "dependencies": {
-    "inherits": "^2.0.1",
     "utils-merge": "^1.0.0"
   }
 }
