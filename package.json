@@ -1,7 +1,7 @@
 {
   "name": "evented-stack",
-  "version": "0.0.5",
-  "description": "Array styled queue",
+  "version": "0.0.6",
+  "description": "Evented, Array styled, queue for node",
   "author": "Javier Carrillo <stringparser@gmail.com> (http://www.stringparser.com)",
   "repository": {
     "type": "git",
@@ -14,7 +14,8 @@
     "utility",
     "queue",
     "control flow",
-    "events"
+    "event",
+    "stack"
   ],
   "repository": "stringparser/stack",
   "dependencies": {

@@ -13,8 +13,7 @@
   and jessetane's [queue](https://www.npmjs.org/package/queue)
 
 ### General idea
-  One gets an Array subClass out of the `module`, see `./lib/ArraySubClass.js` or
-  [kangax post](http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/) on how to do that.
+  Get an Array subClass out of the `module` after which one can add flow control. See `./lib/ArraySubClass.js` or the awesome [kangax post](http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/) on how to do that.
 
   Added to the Array goodness, the array inherits from EventEmitter to make
   flow control over the queue customizable.
