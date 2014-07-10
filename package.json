@@ -1,6 +1,6 @@
 {
   "name": "evented-stack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Evented, Array styled, queue for node",
   "author": "Javier Carrillo <stringparser@gmail.com> (http://www.stringparser.com)",
   "repository": {
@@ -17,7 +17,6 @@
     "event",
     "stack"
   ],
-  "repository": "stringparser/stack",
   "dependencies": {
     "utils-merge": "^1.0.0"
   },
