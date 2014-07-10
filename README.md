@@ -1,6 +1,6 @@
-# Stack
+# Stacked
 
- Evented, Array styled, queue for node
+ Evented, Array styled, stack for node
 
 ### Why
   I wanted an array like queue with juicy behaviour and custom flow control.
@@ -14,8 +14,8 @@
   Added to the Array goodness, there is an observer pattern baked in to make
   flow control over the queue customizable.
 
-  For iterative methods such as `forEach`, `every` and `some` events are emitted
-  at the start, next, and end elements.
+  For iterative methods such as `forEach`, events are emitted. See below for
+  more information on this.
 
   <b>Note</b>: only functions can be pushed to the Stack if you are only interested
   on the evented behaviour of the array look at `/lib/EventedArray.js` instead.
@@ -26,7 +26,7 @@
 
 ```
 var http = require('http');
-var Stack = require('stack'); // Array subClass - EventEmitter
+var Stack = require('stacked'); // Array subClass - EventEmitter
 var stack = new Stack();
 
 // elements of the stack
@@ -87,3 +87,8 @@ Server.listen(3000, function(){
   console.log('Server running on port '+3000);
 })
 ```
+
+### API
+
+At this point the package is still on flux. Right know you can expect, `Array`
+and `EventEmitter` like api.
