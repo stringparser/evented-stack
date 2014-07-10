@@ -37,7 +37,7 @@ that might change.
 
 ### Usage
 
- Lets make a simple example that will measue the time of a request
+ As an example, lets make a middleware that will measure the time of a request.
 
 ```js
 var http = require('http');
@@ -48,14 +48,14 @@ var stack = new Stack();
 stack.push(function stackFn1(req, res){
 
     stack.set('request time', new Date())
-    res.write('')
+    res.write('There is no dark side of the Moon.')
 
-    return 'There is no dark side of the Moon.';
+    return 'Layer 1!';
 
   }).push(function stackFn2(req, res){
 
-    res.write('\n As a matter of fact.')
-    return 'Second layer return';
+    res.write('\nAs a matter of fact ')
+    return 'Layer 2!';
 
   })
 
@@ -73,8 +73,8 @@ stack.once('start', function onStart(req, res){ // Once call back
     console.log('onEnd: finished!')
     var time = ( new Date() - stack.get('request time') ).toString();
 
-    res.write('It\'s all dark.');
-    res.write('\n');
+    res.write('it\'s all dark.');
+    res.write('\n\n');
     res.end('The request took ' + time + ' ms');
   })
 

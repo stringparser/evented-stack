@@ -15,33 +15,35 @@ stack
 // > undefined
 stack.push(function stackFn1(req, res){
 
-  stack.set('request time', new Date())
-  res.write('There is no dark side of the Moon.')
+    stack.set('request time', new Date())
+    res.write('There is no dark side of the Moon.')
 
-  return 'Layer 1!';
+    return 'Layer 1!';
 
-}).push(function stackFn2(req, res){
+  }).push(function stackFn2(req, res){
 
-  res.write('\nAs a matter of fact ')
-  return 'Layer 2!';
+    res.write('\nAs a matter of fact ')
+    return 'Layer 2!';
 
-}).once('start', function onStart(req, res){ // Once call back
+  })
 
-  console.log('onStart: Next time I won\'t be here')
+stack.once('start', function onStart(req, res){ // Once call back
 
-}).on('next', function onNext(req, res){
+    console.log('onStart: Next time I won\'t be here')
 
-  console.log('onNext: In between layers of the stack')
+  }).on('next', function onNext(req, res){
 
-}).on('end', function onEnd(req, res){
+    console.log('onNext: In between layers of the stack')
 
-  console.log('onEnd: finished!')
-  var time = ( new Date() - stack.get('request time') ).toString();
+  }).on('end', function onEnd(req, res){
 
-  res.write('it\'s all dark.');
-  res.write('\n');
-  res.end('The request took ' + time + ' ms');
-})
+    console.log('onEnd: finished!')
+    var time = ( new Date() - stack.get('request time') ).toString();
+
+    res.write('it\'s all dark.');
+    res.write('\n');
+    res.end('The request took ' + time + ' ms');
+  })
 // > [ [Function: stackFn1],
 // >   [Function: stackFn2] ]
 
