@@ -24,9 +24,9 @@ Have the thing inherit from EventEmitter so one can plug flow control on the kno
 
 Niceness:
 
-  * One should be able to switch the events on and of.
-  * setState method provided to store simple data between layers of the stack.
-
+  * One should be able to switch the events on and off.
+  * set and get methods to store simple data between layers of the stack.
+f
 Defaults:
 
   * For iterative methods such as `forEach`, events are emitted. See below for
