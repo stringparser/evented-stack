@@ -1,11 +1,11 @@
 {
-  "name": "stacked",
+  "name": "evented-stack",
   "version": "0.0.3",
   "description": "Array styled queue",
   "author": "Javier Carrillo <stringparser@gmail.com> (http://www.stringparser.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stringparser/stacked"
+    "url": "https://github.com/stringparser/evented-stack"
   },
   "engines": {
     "node": ">= 0.10.0"

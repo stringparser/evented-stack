@@ -1,4 +1,4 @@
-# Stacked
+# evented stack
 
  Evented, Array styled, stack for node
 
@@ -9,16 +9,18 @@
   and jessetane's [queue](https://www.npmjs.org/package/queue)
 
 ### General idea
-  You get an Array subClass out of the `module`.
+  One gets an Array subClass out of the `module`.
 
-  Added to the Array goodness, there is an observer pattern baked in to make
+  Added to the Array goodness, the array inherits from EventEmitter to make
   flow control over the queue customizable.
+
+  One should be able to switch the events on and of.
 
   For iterative methods such as `forEach`, events are emitted. See below for
   more information on this.
 
-  <b>Note</b>: only functions can be pushed to the Stack if you are only interested
-  on the evented behaviour of the array look at `/lib/EventedArray.js` instead.
+  <b>Note</b>: right you can push everything to the stack. In the future
+  that might change.
 
 ### Usage
 
@@ -29,7 +31,7 @@ var http = require('http');
 var Stack = require('stacked'); // Array subClass - EventEmitter
 var stack = new Stack();
 
-// elements of the stack
+// Elements of the stack
 stack.push(function stackFn1(req, res){
 
     stack.set('request time', new Date());
@@ -40,7 +42,7 @@ stack.push(function stackFn1(req, res){
     res.write(' there!');
   })
 
-// events
+// Events
 stack.once('start', function onStart(req, res){ // A once callback
 
     console.log('Next time I won\'t be here');
@@ -60,16 +62,16 @@ stack.once('start', function onStart(req, res){ // A once callback
 
 At this point the stack is
 ```
-stack =
-// > [ [Function: stackFn1],
-// >   [Function: stackFn2] ]
-stack._events =
-// > { start: { [Function: g] listener: [Function: onStart] },
-// >   next: [Function: onNext],
-// >   end: [Function: onEnd] }
+console.log(stack)
+ [ [Function: stackFn1],
+  [Function: stackFn2] ]
+console.log(stack._events)
+ { start: { [Function: g] listener: [Function: onStart] },
+    next: [Function: onNext],
+     end: [Function: onEnd] }
 ```
 
-Now we can hook it up to the server
+Now we can hook it up to a http.Server
 ```
 var Server = http.createServer(function(req, res){
 
