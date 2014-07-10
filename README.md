@@ -92,3 +92,6 @@ Server.listen(3000, function(){
 
 At this point the package is still on flux. Right know you can expect, `Array`
 and `EventEmitter` like api.
+
+### License
+ MIT
