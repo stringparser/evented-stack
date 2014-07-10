@@ -62,7 +62,6 @@ var Server = http.createServer(function(req, res){
 
   // stack.run is like [].forEach but fires 3 events: `start`, `next` and `end`
   // spec: stack.run(stackArgs [,callback(lasRet, index, allReturns)])
-
   stack.run(req, res, function(lastReturn, index, returns){
     console.log('\nstack[' + index-1 + '] returned ', lastReturn, '\n');
   })

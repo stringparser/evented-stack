@@ -100,7 +100,8 @@ var Server = http.createServer(function(req, res){
   // Or listen on demand
     stack.silent = false;
 
-  // stack.run is like [].forEach but fires 3 events: `start`, `next` and `end`
+  // We could use stack.forEach but we'll use the build-in method #run
+  // is like [].forEach but fires 3 events: `start`, `next` and `end`
   // spec: stack.run(stackArgs [,callback(lasRet, index, allReturns)])
   stack.run(req, res, function(lastReturn, index, returns){
     console.log('\nstack[' + index-1 + '] returned ', lastReturn, '\n');
@@ -116,6 +117,8 @@ Server.listen(3000, function(){
 
 At this point the package is still on flux. Right know you can expect, `Array`
 and `EventEmitter` like api.
+
+If you are curious look at `./lib/Stack.js`. In any case this might change
 
 ### License
  MIT
