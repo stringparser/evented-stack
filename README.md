@@ -2,14 +2,19 @@
 
  Evented, Array styled, stack for node
 
+  ```
+  npm install evented-stack
+  ```
+
 ### Why
-  I wanted an array like queue with juicy behaviour and custom flow control.
+  Wanted an Array like queue with juicy behaviour and custom flow control.
 
   Inspired by creationix's [stack](https://www.npmjs.org/package/stack)
   and jessetane's [queue](https://www.npmjs.org/package/queue)
 
 ### General idea
-  One gets an Array subClass out of the `module`.
+  One gets an Array subClass out of the `module`, see `./lib/ArraySubClass.js` or
+  [kangax post](http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/) on how to do that.
 
   Added to the Array goodness, the array inherits from EventEmitter to make
   flow control over the queue customizable.
