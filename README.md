@@ -2,7 +2,7 @@
 
  Evented, Array styled, stack for node
 
-  ```
+  ```shell
   npm install evented-stack
   ```
 
@@ -39,7 +39,7 @@ that might change.
 
  Lets make a simple example that will measue the time of a request
 
-```
+```javascript
 var http = require('http');
 var Stack = require('stacked'); // Array subClass - EventEmitter
 var stack = new Stack();
@@ -74,7 +74,7 @@ stack.once('start', function onStart(req, res){ // A once callback
 ```
 
 At this point the stack is
-```
+```js
 console.log(stack)
  [ [Function: stackFn1],
   [Function: stackFn2] ]
@@ -85,7 +85,7 @@ console.log(stack._events)
 ```
 
 Now we can hook it up to a http.Server
-```
+```js
 var Server = http.createServer(function(req, res){
 
   stack.silent = true;  // We can choose to keep events quiet
