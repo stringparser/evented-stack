@@ -1,18 +1,34 @@
-
-var http = require('http'),
-   Stack = require('./index.js');
-// > undefined
-
-
 //
 // > undefined
-var stack = new Stack();
+// ## Example with inline return values
 // > undefined
-stack
-// > []
+//    (done using `Worksheet` pluging of sublime-text)
+// > undefined
 
-// Stack inherits from event emitter
-// > undefined
+var http = require('http');
+  , Stack = require('../index.js')
+  , stack = new Stack();
+
+
+stack;
+// > []
+Object.getOwnPropertyNames(stack);
+// > [ 'length',
+// >   'break',
+// >   'continue',
+// >   'silent',
+// >   '_events',
+// >   '_state' ]
+stack.__proto__;
+// > [ set: [Function],
+// >   get: [Function],
+// >   run: [Function],
+// >   forEach: [Function: forEach],
+// >   push: [Function] ]
+
+//
+// ## Stack inherits from event emitter
+//
 stack.push(function stackFn1(req, res){
 
     stack.set('request time', new Date())
@@ -26,6 +42,8 @@ stack.push(function stackFn1(req, res){
     return 'Layer 2!';
 
   })
+// > [ [Function: stackFn1],
+// >   [Function: stackFn2] ]
 
 stack.once('start', function onStart(req, res){ // Once call back
 
@@ -82,9 +100,14 @@ Server.listen(3000, function(){
 // >   _maxListeners: 10,
 // >   _connections: 0,
 // >   connections: [Getter/Setter],
-// >   _handle: null,
+// >   _handle:
+// >    { fd: 10,
+// >      writeQueueSize: 0,
+// >      onconnection: [Function: onconnection],
+// >      owner: [Circular] },
 // >   _usingSlaves: false,
 // >   _slaves: [],
 // >   allowHalfOpen: true,
 // >   httpAllowHalfOpen: false,
-// >   timeout: 120000 }
+// >   timeout: 120000,
+// >   _connectionKey: '4:0.0.0.0:3000' }
