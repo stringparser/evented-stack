@@ -26,10 +26,10 @@ Niceness:
 
   * One should be able to switch the events on and off.
   * set and get methods to store simple data between layers of the stack.
-f
+
 Defaults:
 
-  * For iterative methods such as `forEach`, events are emitted. See below for
+  * For iterative methods such as `forEach`, events are emitted. See below example for
   more information on this.
 
 <b>Note</b>: right you can push everything to the stack. In the future
