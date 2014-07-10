@@ -1,6 +1,6 @@
 # Stack
 
- Evented, Array styled, queue for node and the browser
+ Evented, Array styled, queue for node
 
 ### Why
   I wanted an array like queue with juicy behaviour and custom flow control.
