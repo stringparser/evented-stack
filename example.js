@@ -1,12 +1,16 @@
 
 var http = require('http'),
-   Stack = require('stack');
+   Stack = require('./index.js');
+// > undefined
 
 
 //
+// > undefined
 var stack = new Stack();
+stack
 
 // Stack inherits from event emitter
+// > undefined
 stack.push(function stackFn1(req, res){
 
   stack.set('request time', new Date())
@@ -30,16 +34,20 @@ stack.push(function stackFn1(req, res){
   res.write('\n')
   res.end('Tiempo de respueta del servidor: ' + time + ' ms');
 })
-// > [ [Function: stackFn1],
-// >   [Function: stackFn2] ]
+// > TypeError: Object [object Object] has no method 'push'
+// >     at repl:1:8
+// >     at REPLServer.self.eval (repl.js:112:21)
+// >     at Interface.<anonymous> (repl.js:239:12)
+// >     at Interface.emit (events.js:95:17)
+// >     at Interface._onLine (readline.js:202:10)
+// >     at Interface._line (readline.js:531:8)
+// >     at Interface._ttyWrite (readline.js:767:16)
+// >     at ReadStream.onkeypress (readline.js:99:10)
+// >     at ReadStream.emit (events.js:98:17)
+// >     at emitKey (readline.js:1095:12)
 
 stack
-// > [ [Function: stackFn1],
-// >   [Function: stackFn2] ]
 stack._events
-// > { start: { [Function: g] listener: [Function: onStart] },
-// >   next: [Function: onNext],
-// >   end: [Function: onEnd] }
 
 var Server = http.createServer(function(req, res){
 
@@ -56,23 +64,7 @@ var Server = http.createServer(function(req, res){
 
   })
 })
-// > undefined
 
 Server.listen(3000, function(){
   console.log('Server running on port '+3000);
 })
-// > { domain: null,
-// >   _events:
-// >    { request: [Function],
-// >      connection: [Function: connectionListener],
-// >      clientError: [Function],
-// >      listening: { [Function: g] listener: [Function] } },
-// >   _maxListeners: 10,
-// >   _connections: 0,
-// >   connections: [Getter/Setter],
-// >   _handle: null,
-// >   _usingSlaves: false,
-// >   _slaves: [],
-// >   allowHalfOpen: true,
-// >   httpAllowHalfOpen: false,
-// >   timeout: 120000 }

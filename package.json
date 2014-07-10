@@ -1,6 +1,6 @@
 {
   "name": "evented-stack",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Evented, Array styled, queue for node",
   "author": "Javier Carrillo <stringparser@gmail.com> (http://www.stringparser.com)",
   "repository": {

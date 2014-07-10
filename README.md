@@ -39,9 +39,9 @@ that might change.
 
  Lets make a simple example that will measue the time of a request
 
-```javascript
+```js
 var http = require('http');
-var Stack = require('stacked'); // Array subClass - EventEmitter
+var Stack = require('evented-stack'); // Array subClass - EventEmitter
 var stack = new Stack();
 
 // Elements of the stack
@@ -60,7 +60,7 @@ stack.once('start', function onStart(req, res){ // A once callback
 
     console.log('Next time I won\'t be here');
 
-  }).on('next', function onNext(req, res){
+  }).on('next', function onNext(req, res){ // Between stack functions (layer)
 
     console.log('In between layers of the stack')
 
