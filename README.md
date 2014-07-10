@@ -16,11 +16,11 @@
 
 On mind:
 
- Get an Array subClass out of the `module` after which one can add flow control.
+Get an Array subClass out of the `module` after which one can add flow control.
 
  * See `./lib/ArraySubClass.js` or the awesome [kangax post](http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/) on how to do that.
 
- Have the thing inherit from EventEmitter so one can plug flow control on the known array methods.
+Have the thing inherit from EventEmitter so one can plug flow control on the known array methods.
 
 Niceness:
 
