@@ -1,6 +1,7 @@
 # evented stack
 
  Evented, Array styled, stack for node
+ [![NPM version](https://badge.fury.io/js/evented-stack.svg)](http://badge.fury.io/js/evented-stack)
 
   ```shell
   npm install evented-stack
